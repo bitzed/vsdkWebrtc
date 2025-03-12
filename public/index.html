@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VideoSDK WebRTC Web Sample</title>
+    <style>
+    .video-canvas {
+      background: rgba(0, 0, 0, 1);
+      margin: 1px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 1);
+    }
+    
+    video-player-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: auto;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    video-player {
+      width: 25%;
+      height: auto;
+      min-width: 320px;
+      aspect-ratio: 16/9;
+      background-color: gray;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    video-player video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    </style>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+<div id="inputForms" class="input-forms" style="display:block;width:24%;height:100%;float:left;">
+  <div class="mb-3" style="width:100%;">
+    <label for="user_name" class="form-label">Display Name</label>
+    <input type="text" class="form-control" id="user_name" placeholder="Enter your display name" value="videosdk-user-01" required>
+  </div>
+  <div class="mb-3" style="width:100%;">
+    <label for="session_topic" class="form-label">Session Name</label>
+    <input type="text" class="form-control" id="session_topic" placeholder="Session Topic" value="vsdkmeeting" required>
+  </div>
+  <div class="mb-3" style="width:100%;">
+    <label for="session_pwd" class="form-label">Session Password</label>
+    <input type="text" class="form-control" id="session_pwd" placeholder="Session Password" value="123456">
+  </div>
+  <form id="join-role">
+      <input type="radio" name="joinRole" value="0" checked> Participant
+      <input type="radio" name="joinRole" value="1"> Host
+  </form>
+  <p>
+    <button type="button" class="btn btn-primary" id="join-button">Join (Start) Session</button>
+    <button type="button" class="btn btn-secondary" id="leave-button">Leave (End) Session</button>
+  </p>
+</div>
+<div id="buttons-and-canvas" class="main" style="display:block;width:74%;height:100%;overflow:scroll;float:right;">
+  <p>Self Video:</p>
+  <video id="self-video-videotag" class="video-canvas" width="1280" height="720" style="background-color:gray; height:360px; width:640px;"></video>
+  <br />
+  <p>Remote Videos:</p>
+  <!-- Use video-player-container for WebRTC mode -->
+  <video-player-container></video-player-container>
+</div>
+
+  <script src="https://source.zoom.us/videosdk/zoom-video-2.1.5.min.js"></script>
+  <script src="./js/index.js"></script>
+
+</body>
+</html>
